@@ -183,6 +183,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Bar.h" />
     <ClInclude Include="BrickBreak.h" />
     <ClInclude Include="BrickBreakDoc.h" />
@@ -198,6 +199,7 @@
     <ClInclude Include="ViewTree.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Ball.cpp" />
     <ClCompile Include="Bar.cpp" />
     <ClCompile Include="BrickBreak.cpp" />
     <ClCompile Include="BrickBreakDoc.cpp" />
