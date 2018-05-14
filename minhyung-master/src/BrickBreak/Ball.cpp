@@ -12,7 +12,7 @@ Ball::~Ball()
 }
 
 
-void Ball::setPoint(int x, int y, int size)
+void Ball::setPoint(int x, int y, int size) //°øÀ§Ä¡
 {
 	x1 = x;
 	x2 = x1 + size;
