@@ -16,6 +16,7 @@ void Bar::MoveToLeft()
 	{
 		x1 -= 10;
 		x2 = x1 + width;
+		moving = 1;
 	}
 }
 
@@ -25,6 +26,7 @@ void Bar::MoveToRight(int m_WinRight)
 	{
 		x1 += 10;
 		x2 = x1 + width;
+		moving = 2;
 	}
 }
 
