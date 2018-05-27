@@ -10,23 +10,48 @@ Bar::~Bar()
 {
 }
 
-void Bar::MoveToLeft()
+void Bar::MoveToLeft(int x)
 {
-	if (x1 > 0)
+	if (fast)
 	{
-		x1 -= 10;
-		x2 = x1 + width;
-		moving = 1;
+		if (x1 > 0)
+		{
+			x1 = x;  
+			x2 = x1 + width;
+			moving = 1; //바가 왼쪽으로 이동중이다
+		}
+	}
+	else
+	{
+		if (x1 > 0)
+		{
+			
+			x1 -= 10;
+			x2 = x1 + width;
+			moving = 1; //바가 왼쪽으로 이동중이다
+		}
 	}
 }
 
-void Bar::MoveToRight(int m_WinRight)
+void Bar::MoveToRight(int m_WinRight, int x)
 {
-	if (x2 < m_WinRight)
+	if (fast)
 	{
-		x1 += 10;
-		x2 = x1 + width;
-		moving = 2;
+		if (x2 < m_WinRight)
+		{
+			x1 = x;
+			x2 = x1 + width;
+			moving = 2; //바가 오른쪽으로 이동중이다
+		}
+	}
+	else
+	{
+		if (x2 < m_WinRight)
+		{
+			x1 += 10;
+			x2 = x1 + width;
+			moving = 2; //바가 오른쪽으로 이동중이다
+		}
 	}
 }
 
