@@ -195,4 +195,16 @@
       <Filter>리소스 파일</Filter>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\..\POL-nuts-and-bolts-short\POL-nuts-and-bolts-short.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="sound\bg.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+    <Media Include="sound\collision.mp3" />
+    <Media Include="sound\collision.wav">
+      <Filter>리소스 파일</Filter>
+    </Media>
+  </ItemGroup>
 </Project>

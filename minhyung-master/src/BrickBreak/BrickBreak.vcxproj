@@ -118,6 +118,7 @@
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
+      <AdditionalDependencies>winmm.lib</AdditionalDependencies>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
@@ -253,6 +254,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="res\BrickBreak.rc2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="..\..\..\..\POL-nuts-and-bolts-short\POL-nuts-and-bolts-short.wav" />
+    <Media Include="sound\bg.wav" />
+    <Media Include="sound\collision.mp3" />
+    <Media Include="sound\collision.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
