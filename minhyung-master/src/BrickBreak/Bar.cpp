@@ -14,7 +14,7 @@ void Bar::MoveToLeft(int x)
 {
 	if (fast)
 	{
-		if (x1 > 0)
+		if (x1 > 0 )
 		{
 			x1 = x;  
 			x2 = x1 + width;
