@@ -14,7 +14,7 @@ void Bar::MoveToLeft(int x)
 {
 	if (fast)
 	{
-		if (x1 > 0 )
+		if (x1 > 0)
 		{
 			x1 = x;  
 			x2 = x1 + width;
@@ -39,14 +39,22 @@ void Bar::MoveToRight(int m_WinRight, int x)
 	{
 		if (x2 < m_WinRight)
 		{
-			x1 = x;
-			x2 = x1 + width;
+			if (x > m_WinRight - width)  //오른쪽 끝으로 갔을때 
+			{
+				x1 = x - width;
+				x2 = x;
+			}
+			else
+			{
+				x1 = x;
+				x2 = x1 + width;
+			}
 			moving = 2; //바가 오른쪽으로 이동중이다
 		}
 	}
 	else
 	{
-		if (x2 < m_WinRight)
+		if (x2 < m_WinRight - width)
 		{
 			x1 += 10;
 			x2 = x1 + width;
