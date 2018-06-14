@@ -336,7 +336,7 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 
 
 		//벽충돌 처리
-		if (ball.x1 < 0 || ball.x2 > m_WinRight)
+		if (ball.x1 < WALL || ball.x2 > m_WinRight - WALL)
 		{
 			ball.x1 -= ball.xStep;
 			ball.x2 -= ball.xStep;
