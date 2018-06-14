@@ -44,6 +44,8 @@ using namespace std;
 #define BAR_HEIGHT 10 //바의 높이
 #define BAR_WIDTH_MAX 300 // 바크기의 최대값
 #define BAR_WIDTH_MIN 75  // 바크기의 최소값
+#define TOP_HEIGHT 30	//위의 벽 높이
+#define WALL 150	//벽 계산용 값
 
 
 // CBrickBreakView
@@ -240,8 +242,18 @@ void CBrickBreakView::OnDraw(CDC* pDC)
 
 	//위쪽 벽 표현
 	pMemDC->SelectObject(&whitePen);
-	pMemDC->MoveTo(0, 30);
-	pMemDC->LineTo(m_WinRight, 30);
+	pMemDC->MoveTo(0, TOP_HEIGHT);
+	pMemDC->LineTo(m_WinRight, TOP_HEIGHT);
+	//왼쪽 벽 표현
+	pMemDC->MoveTo(WALL, TOP_HEIGHT);
+	pMemDC->LineTo(WALL, m_WinBottom);
+	pMemDC->MoveTo(WALL-10, TOP_HEIGHT);
+	pMemDC->LineTo(WALL-10, m_WinBottom);
+	//오른쪽
+	pMemDC->MoveTo(m_WinRight-WALL, TOP_HEIGHT);
+	pMemDC->LineTo(m_WinRight - WALL, m_WinBottom);
+	pMemDC->MoveTo(m_WinRight - WALL+10, TOP_HEIGHT);
+	pMemDC->LineTo(m_WinRight - WALL+10, m_WinBottom);
 
 	//벽돌 그리기
 	for (int i = 0; i < stage_total_bricks; i++)
@@ -292,8 +304,6 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 		ball.y1 += ball.yStep;
 		ball.x2 += ball.xStep;
 		ball.y2 += ball.yStep;
-
-
 		//공과 블록의 충돌 처리
 		
 		for (int i = 0; i < stage_total_bricks; i++)
@@ -333,7 +343,7 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 			ball.xStep *= -1;
 		}
 		//위쪽 벽 충돌 처리
-		if (ball.y1 < 30) 
+		if (ball.y1 < TOP_HEIGHT)
 		{
 			//팅기기
 			ball.y1 -= ball.yStep;
