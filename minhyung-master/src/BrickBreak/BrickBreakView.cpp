@@ -89,7 +89,7 @@ CBrickBreakView::CBrickBreakView()
 
 	Space_flag = 0;
 
-	stage = 4;
+	stage = 1;
 	init = 0;
 	stage_total_bricks = STAGE_1;
 
@@ -218,19 +218,20 @@ void CBrickBreakView::OnDraw(CDC* pDC)
 	COLORREF colorGreen = RGB(0, 255, 0);
 	COLORREF colorBlue = RGB(0, 0, 255);
 	COLORREF colorWhite = RGB(255, 255, 255);
-
+	COLORREF colorSilver = RGB(128, 128, 128);	
 
 	CPen blackPen, whitePen;
 	blackPen.CreatePen(PS_SOLID, 1, colorBlack);
 	whitePen.CreatePen(PS_SOLID, 1, colorWhite);
 
 
-	CBrush blackBrush, whiteBrush, redBrush, greenBrush, blueBrush;
+	CBrush blackBrush, whiteBrush, redBrush, greenBrush, blueBrush, silverBrush;
 	whiteBrush.CreateSolidBrush(colorWhite);
 	blackBrush.CreateSolidBrush(colorBlack);
 	redBrush.CreateSolidBrush(colorRed);
 	greenBrush.CreateSolidBrush(colorGreen);
 	blueBrush.CreateSolidBrush(colorBlue);
+	silverBrush.CreateSolidBrush(colorSilver);
 
 
 	//¹ÙÅÁÈ­¸é 
@@ -262,8 +263,11 @@ void CBrickBreakView::OnDraw(CDC* pDC)
 			pMemDC->FillRect(CRect(brick[i].x1, brick[i].y1, brick[i].x2, brick[i].y2), &redBrush);
 		if (brick[i].life == 2)
 			pMemDC->FillRect(CRect(brick[i].x1, brick[i].y1, brick[i].x2, brick[i].y2), &greenBrush);
-		if (brick[i].item_flag == true)
+		if (brick[i].item_flag == true && brick[i].item != 3 && brick[i].item !=  2 && brick[i].item != 6)
 			pMemDC->FillRect(CRect(brick[i].x1, brick[i].y1, brick[i].x2, brick[i].y2), &blueBrush);
+		if (brick[i].item_flag == true && (brick[i].item == 3 || brick[i].item == 2 || brick[i].item == 6))
+			pMemDC->FillRect(CRect(brick[i].x1, brick[i].y1, brick[i].x2, brick[i].y2), &silverBrush);
+		
 	}
 
 
