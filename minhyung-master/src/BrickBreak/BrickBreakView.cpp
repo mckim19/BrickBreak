@@ -87,10 +87,9 @@ CBrickBreakView::CBrickBreakView()
 
 
 
-
 	Space_flag = 0;
 
-	stage = 4;
+	stage = 1;
 	init = 0;
 	stage_total_bricks = STAGE_1;
 
@@ -378,7 +377,7 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 			InvalidateRect(NULL);
 			if (Life == 0) // 목숨이 없을경우
 			{
-				MessageBox(_T("게임종료"), _T("에러창"), MB_ICONINFORMATION);
+				MessageBox(_T("게임종료!"), _T("에러창"),  MB_ICONINFORMATION);
 				Initialize(0);
 			}
 
@@ -437,11 +436,14 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 				if (stage == 5)
 				{
 					MessageBox(_T("게임종료!!"), _T("에러창"), MB_ICONINFORMATION);
-					Initialize(0);
+					::PostQuitMessage(WM_QUIT);   //창끄기
 				}
-				MessageBox(_T("스테이지 클리어!! \n 다음 스테이지로 넘어갑니다"), _T("에러창"), MB_ICONINFORMATION);
+				else
+				{
+					MessageBox(_T("스테이지 클리어!! \n 다음 스테이지로 넘어갑니다"), _T("에러창"), MB_ICONINFORMATION);
+					Initialize(1);
+				}
 				
-				Initialize(1);
 			}
 		}
 
@@ -500,7 +502,8 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 								brick[i].item_flag = false; //아이템 얻은후 사라짐
 								break;
 							//공 크기가 작아지는 아이템
-							case 2: if (ball.x1 < (ball.x2 - ball.size / 2) && ball.y1 < (ball.y2 - ball.size / 2)) //공의 크기 미니멈 지정
+							case 2: 
+								if (ball.x1 < (ball.x2 - ball.size / 2) && ball.y1 < (ball.y2 - ball.size / 2)) //공의 크기 미니멈 지정
 									{
 										ball.x2 -= ball.size/2;
 										ball.y2 -= ball.size/2;
@@ -508,7 +511,8 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 									brick[i].item_flag = false; //아이템 얻은후 사라짐
 									break;
 							//공 속도가 빨라지는 아이템
-							case 3: if (ball.xStep > 0)
+							case 3: 
+								if (ball.xStep > 0)
 										ball.xStep += 2;
 									else if (ball.xStep < 0)
 										ball.xStep -= 2;
@@ -519,7 +523,8 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 									brick[i].item_flag = false; //아이템 얻은후 사라짐
 									break;
 							//공 속도가 느려지는 아이템
-							case 4: if (ball.xStep > 5)
+							case 4: 
+								if (ball.xStep > 5)
 										ball.xStep -= 2;
 									else if (ball.xStep < -5)
 										ball.xStep += 2;
