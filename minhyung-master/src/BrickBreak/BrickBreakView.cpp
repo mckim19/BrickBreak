@@ -89,7 +89,7 @@ CBrickBreakView::CBrickBreakView()
 
 	Space_flag = 0;
 
-	stage = 1;
+	stage = 4;
 	init = 0;
 	stage_total_bricks = STAGE_1;
 
@@ -435,7 +435,9 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 				bar.flag = true;
 				if (stage == 5)
 				{
-					MessageBox(_T("게임종료!!"), _T("에러창"), MB_ICONINFORMATION);
+					CString text;
+					text.Format(_T("최종점수 : %d"), Score);
+					MessageBox(text, _T("게임종료!!"), MB_OK);
 					::PostQuitMessage(WM_QUIT);   //창끄기
 				}
 				else
