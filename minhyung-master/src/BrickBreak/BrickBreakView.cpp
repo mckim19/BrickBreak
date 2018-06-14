@@ -436,7 +436,6 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 
 	}
 
-
 	//마우스로 움직일때 바 이동
 	if (nIDEvent == MOVE) {
 		if (bar.flag == true)
