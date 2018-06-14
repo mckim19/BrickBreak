@@ -41,8 +41,8 @@ void Bar::MoveToRight(int m_WinRight, int x)
 		{
 			if (x > m_WinRight - width)  //오른쪽 끝으로 갔을때 
 			{
-				x1 = x - width;
-				x2 = x;
+				x1 = x;
+				x2 = x1 + width;
 			}
 			else
 			{

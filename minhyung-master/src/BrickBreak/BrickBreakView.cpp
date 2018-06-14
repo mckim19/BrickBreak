@@ -451,9 +451,7 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 	if (nIDEvent == MOVE) {
 		if (bar.flag == true)
 		{
-			if (mouse_point.x > m_WinRight / 2)
-				bar.MoveToRight(m_WinRight, mouse_point.x);
-			else if (mouse_point.x < m_WinRight / 2)
+			if(mouse_point.x > WALL && mouse_point.x <m_WinRight - WALL - bar.width)
 				bar.MoveToLeft(mouse_point.x);
 			
 		}
@@ -511,24 +509,24 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 									break;
 							//공 속도가 빨라지는 아이템
 							case 3: if (ball.xStep > 0)
-										ball.xStep += 5;
+										ball.xStep += 2;
 									else if (ball.xStep < 0)
-										ball.xStep -= 5;
+										ball.xStep -= 2;
 									if (ball.yStep > 0)
-										ball.yStep += 5;
+										ball.yStep += 2;
 									else if (ball.yStep < 0)
-										ball.yStep -= 5;
+										ball.yStep -= 2;
 									brick[i].item_flag = false; //아이템 얻은후 사라짐
 									break;
 							//공 속도가 느려지는 아이템
 							case 4: if (ball.xStep > 5)
-										ball.xStep -= 5;
+										ball.xStep -= 2;
 									else if (ball.xStep < -5)
-										ball.xStep += 5;
+										ball.xStep += 2;
 									if (ball.yStep > 5)
-										ball.yStep -= 5;
+										ball.yStep -= 2;
 									else if (ball.yStep < -5)
-										ball.yStep += 5;
+										ball.yStep += 2;
 									brick[i].item_flag = false; //아이템 얻은후 사라짐
 									break;
 							//바의 크기가 커지는 아이템
