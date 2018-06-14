@@ -90,7 +90,7 @@ CBrickBreakView::CBrickBreakView()
 
 	Space_flag = 0;
 
-	stage = 1;
+	stage = 4;
 	init = 0;
 	stage_total_bricks = STAGE_1;
 
@@ -745,38 +745,38 @@ void CBrickBreakView::Initialize(int check)	// Ã¼Å©¶ó´Â º¯¼ö¸¦ ³Ö¾î Ã³À½À¸·Î µ¹¾
 				brick[i].life = 1;	//ºí·Ï »ý¸íÀÌ 1ÀÎ°÷¸¸
 				rand_num = rand() % (STAGE_1 / 10) + 1; //ÀüÃ¼ºí·Ï¼öºÐÀÇ 10ÀÇ È®·ü(ÀÏ´Ü ÀÓÀÇ·Î ÁöÁ¤)
 			}
-			if (i >= 20)
+			if (i >= 14)
 			{
-				brick[i].x1 = ((i+5)%20)* 58 + brick[i].height;
+				brick[i].x1 = ((i+3)% 14)* 58 + brick[i].height + WALL + BRICK_START ;
 				brick[i].x2 = brick[i].x1 + brick[i].height;
 			}
 			else 
 			{
-				brick[i].x1 = (i % 20) * 58 + brick[i].height;
+				brick[i].x1 = (i % 14) * 58 + brick[i].height + WALL + BRICK_START;
 				brick[i].x2 = brick[i].x1 + brick[i].height;
 			}
-			brick[i].y1 = i / 20 * 40 + brick[i].width + 30;
+			brick[i].y1 = i / 14 * 40 + brick[i].width + 30 ;
 			brick[i].y2 = brick[i].y1 + brick[i].width;
 
 		}
 		if (stage == 3)	//½ºÅ×ÀÌÁö 3ÀÇ ±¸Á¶ ¹× ³»¿ë
 		{
-			if ((i % 20) >= 5 && (i % 20) < 15)
+			if ((i % 14) >= 5 && (i % 14) < 9)
 				brick[i].life = 2;	//ºí·Ï»ý¸íÁõ°¡
 			else
 				brick[i].life = 1;
-			if (i >= 40)
+			if (i >= 28)
 			{
 				brick[i].life = 2;
-				brick[i].x1 = ((i + 5) % 20) * 58 + brick[i].height;
+				brick[i].x1 = ((i + 3) % 14) * 58 + brick[i].height + WALL + BRICK_START;
 				brick[i].x2 = brick[i].x1 + brick[i].height;
 			}
 			else
 			{
-				brick[i].x1 = (i % 20) * 58 + brick[i].height;
+				brick[i].x1 = (i % 14) * 58 + brick[i].height  + WALL + BRICK_START;
 				brick[i].x2 = brick[i].x1 + brick[i].height;
 			}
-			brick[i].y1 = i / 20 * 40 + brick[i].width + 30;
+			brick[i].y1 = i / 14 * 40 + brick[i].width + 30;
 			brick[i].y2 = brick[i].y1 + brick[i].width;
 			if(brick[i].life == 1)	//ºí·Ï »ý¸íÀÌ 1ÀÎ°÷¿¡¸¸ ¾ÆÀÌÅÛ ÁöÁ¤
 				rand_num = rand() % (STAGE_1 / 10) + 1; //ÀüÃ¼ºí·Ï¼öºÐÀÇ 10ÀÇ È®·ü(ÀÏ´Ü ÀÓÀÇ·Î ÁöÁ¤)
@@ -785,9 +785,9 @@ void CBrickBreakView::Initialize(int check)	// Ã¼Å©¶ó´Â º¯¼ö¸¦ ³Ö¾î Ã³À½À¸·Î µ¹¾
 		{
 			rand_num = rand() % 2; // 1/2ÀÇ È®·ü·Î Ã³À½¿¡ ºí·Ï ·£´ý»ý¼º
 			brick[i].life = rand_num;
-			brick[i].x1 = (i % 20) * 58 + brick[i].height;
+			brick[i].x1 = (i % 14) * 58 + brick[i].height + WALL + BRICK_START;
 			brick[i].x2 = brick[i].x1 + brick[i].height;
-			brick[i].y1 = i / 20 * 40 + brick[i].width + 30;
+			brick[i].y1 = i / 14 * 40 + brick[i].width + 30;
 			brick[i].y2 = brick[i].y1 + brick[i].width;
 			rand_num = rand() % (STAGE_1 / 10) + 1; //ÀüÃ¼ºí·Ï¼öºÐÀÇ 10ÀÇ È®·ü(ÀÏ´Ü ÀÓÀÇ·Î ÁöÁ¤)
 		}
@@ -795,7 +795,7 @@ void CBrickBreakView::Initialize(int check)	// Ã¼Å©¶ó´Â º¯¼ö¸¦ ³Ö¾î Ã³À½À¸·Î µ¹¾
 		{
 			brick[i].item_flag = true;  //¾ÆÀÌÅÛ ºí·ÏÁöÁ¤ 
 			brick[i].item = rand() % TOTAL_ITEM + 1; //¾ÆÀÌÅÛÀÇ ÃÑ Á¾·ù ¼ö¸¸Å­ ³ª´²¼­ ³ÖÀ½
-			//brick[i].item = 4; 
+
 		}
 		else
 		{
