@@ -407,11 +407,7 @@ void CBrickBreakView::OnTimer(UINT_PTR nIDEvent)
 				ball.xStep *= -5;
 				
 			}
-
-			
 		}
-
-
 
 		//모든블록이 제거되면 게임 종료
 		for (int i = 0; i < stage_total_bricks; i++)
