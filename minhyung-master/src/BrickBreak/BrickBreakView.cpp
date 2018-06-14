@@ -33,7 +33,7 @@ using namespace std;
 #define MOVE 1
 #define COLLISION 2
 #define ITEM_TIMER 3  //아이템 타이머작동을 위한 상수
-#define STAGE_1 40  //STAGE_1의 총 블록개수
+#define STAGE_1 28  //STAGE_1의 총 블록개수
 #define STAGE_2 50   //STAGE_2의 총 블록개수
 #define STAGE_3 50	//STAGE_3의 총 블록개수
 #define STAGE_4 80	//STAGE_4의 총 블록개수
@@ -46,6 +46,7 @@ using namespace std;
 #define BAR_WIDTH_MIN 75  // 바크기의 최소값
 #define TOP_HEIGHT 30	//위의 벽 높이
 #define WALL 150	//벽 계산용 값
+#define BRICK_START 25 //벽돌 시작값을 초기에 더해주기 위해
 
 
 // CBrickBreakView
@@ -729,9 +730,9 @@ void CBrickBreakView::Initialize(int check)	// 체크라는 변수를 넣어 처음으로 돌�
 		if (stage == 1)	//스테이지 1의 구조, 및 내용
 		{
 			brick[i].life = 1;
-			brick[i].x1 = (i % 20) * 58 + brick[i].height;
+			brick[i].x1 = (i % 14) * 58 + brick[i].height + WALL + BRICK_START;
 			brick[i].x2 = brick[i].x1 + brick[i].height;
-			brick[i].y1 = i / 20 * 40 + brick[i].width + 30;
+			brick[i].y1 = i / 14 * 40 + brick[i].width + 30;
 			brick[i].y2 = brick[i].y1 + brick[i].width;
 
 			//아이템을 포함하는 블록 램덤 지정
